@@ -209,8 +209,8 @@ void app_main() {
 
     /* initialize our ghota config */
     ghota_config_t ghconfig = {
-        .filenamematch = "esp_ghota-esp32.bin",
-        .storagenamematch = "storage-esp32.bin",
+        .filenamematch = "firmware.bin",
+        // .storagenamematch = "storage-esp32.bin",
         .storagepartitionname = "storage",
         /* 1 minute as a example, but in production you should pick something larger (remember, Github has ratelimites on the API! )*/
         .updateInterval = 1,
