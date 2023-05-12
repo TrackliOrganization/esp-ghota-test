@@ -9,6 +9,7 @@
 #include "esp_log.h"
 #include "nvs_flash.h"
 #include "esp_spiffs.h"
+#include "esp_ota_ops.h"
 
 #include "lwip/err.h"
 #include <lwip/sys.h>
@@ -283,9 +284,11 @@ void app_main() {
     
 #endif
 
+    const esp_partition_t *part = esp_ota_get_running_partition();
     while (1) {
         vTaskDelay(5000 / portTICK_PERIOD_MS);
         ESP_LOGI(TAG, "This is where we do other things. Memory Dump Below to see the memory usage");
+        ESP_LOGI(TAG, "Running partiton: %s", part->label);
         ESP_LOGI(TAG, "Memory: Free %dKiB Low: %dKiB\n", (int)xPortGetFreeHeapSize()/1024, (int)xPortGetMinimumEverFreeHeapSize()/1024);
     }
 
